@@ -41,18 +41,18 @@ def getMainPower(HOST_Addr):
         for i in range(12):
             MainSysPower[i] = conver32(demo1[i*2],demo1[i*2+1])
             
-        MainSysPayload = {"MainSysPower01" : MainSysPower[0],
-                          "MainSysPower02" : MainSysPower[1],
-                          "MainSysPower03" : MainSysPower[2],
-                          "MainSysPower04" : MainSysPower[3],
-                          "MainSysPower05" : MainSysPower[4],
-                          "MainSysPower06" : MainSysPower[5],
-                          "MainSysPower07" : MainSysPower[6],
-                          "MainSysPower08" : MainSysPower[7],
-                          "MainSysPower09" : MainSysPower[8],
-                          "MainSysPower10" : MainSysPower[9],
-                          "MainSysPower11" : MainSysPower[10],
-                          "MainSysPower12" : MainSysPower[11], }
+        MainSysPayload = {"MainSysPower01" : MainSysPower[0]*0.1,
+                          "MainSysPower02" : MainSysPower[1]*0.1,
+                          "MainSysPower03" : MainSysPower[2]*0.1,
+                          "MainSysPower04" : MainSysPower[3]*0.1,
+                          "MainSysPower05" : MainSysPower[4]*0.1,
+                          "MainSysPower06" : MainSysPower[5]*0.001,
+                          "MainSysPower07" : MainSysPower[6]*0.001,
+                          "MainSysPower08" : MainSysPower[7]*0.1,
+                          "MainSysPower09" : MainSysPower[8]*0.001,
+                          "MainSysPower10" : MainSysPower[9]*0.1,
+                          "MainSysPower11" : MainSysPower[10]*0.01,
+                          "MainSysPower12" : MainSysPower[11]*0.1, }
     except:
         MainSysPayload = {"MainSysPower01" : 9999,
                           "MainSysPower02" : 9999,
