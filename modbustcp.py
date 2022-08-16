@@ -92,7 +92,7 @@ def SendCharg(token,IPaddr):
         client1 = mqtt.Client()
         client1.username_pw_set(token," ")
         client1.connect("thingsboard.cloud", 1883, 60)
-        print(client1.publish("v1/devices/me/telemetry", json.dumps(getMainPower(IPaddr))))
+        print(client1.publish("v1/devices/me/telemetry", json.dumps(Battery_charging(IPaddr))))
     except:
         pass
 
