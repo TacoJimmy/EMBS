@@ -75,7 +75,7 @@ def Battery_charging(HOST_Addr):
         MainSysPower = [0,0,0,0]
         master = modbus_tcp.TcpMaster(host=HOST_Addr)
         master.set_timeout(5.0)
-        demo1 = master.execute(1, cst.READ_HOLDING_REGISTERS, 6, 4)
+        demo1 = master.execute(1, cst.READ_HOLDING_REGISTERS, 5, 4)
         for i in range(2):
             MainSysPower[i] = conver32(demo1[i*2],demo1[i*2+1])
             
