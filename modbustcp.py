@@ -169,12 +169,14 @@ def dojob():
     SendMainSystem03("PXShUefr1Utw13cfXzr1",'192.168.50.8')
     time.sleep(5)
 
+schedule.every(2).minutes.do(dojob)
 
 if __name__ == '__main__':
 
     while True:
         #getBatteryOP('192.168.50.6')
         #time.sleep(60)
-        schedule.every(2).minutes.do(dojob)
+        schedule.run_pending()
+        time.sleep(2)
         
     
