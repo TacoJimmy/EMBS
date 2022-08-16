@@ -26,7 +26,7 @@ def ReadFloat(*args,reverse=False):
     return y
 
 def conver32(LSB,MSB):
-    conv32value = LSB + ( MSB << 8 )
+    conv32value = LSB + ( MSB << 16 )
     return (conv32value)
 
 
@@ -66,6 +66,7 @@ def getMainPower(HOST_Addr):
                           "MainSysPower10" : 9999,
                           "MainSysPower11" : 9999,
                           "MainSysPower12" : 9999, }
+    print (MainSysPayload)
     return MainSysPayload
 
 def SendMainSystem01(token,IPaddr):
@@ -124,7 +125,8 @@ def getBatteryOP(HOST_Addr):
                    }
            print(battery01payload)
         
-        print(clientB01.publish("v1/devices/me/telemetry", json.dumps(battery01payload)))
+        #print(clientB01.publish("v1/devices/me/telemetry", json.dumps(battery01payload)))
+        print(battery01payload)
         time.sleep(10)
         battery02 = master.execute(1, cst.READ_HOLDING_REGISTERS, 901, 100)
         time.sleep(2)
@@ -137,7 +139,8 @@ def getBatteryOP(HOST_Addr):
                    str(10+i)+"stSOH" : battery01[i*10+9]
                    }
            print(battery01payload)
-        print(clientB01.publish("v1/devices/me/telemetry", json.dumps(battery01payload)))
+        #print(clientB01.publish("v1/devices/me/telemetry", json.dumps(battery01payload)))
+        print(battery01payload)
         time.sleep(10)
         battery03 = master.execute(1, cst.READ_HOLDING_REGISTERS, 1001, 100)
         time.sleep(2)
@@ -150,7 +153,8 @@ def getBatteryOP(HOST_Addr):
                    str(20+i)+"stSOH" : battery01[i*10+9]
                    }
            print(battery01payload)
-        print(clientB01.publish("v1/devices/me/telemetry", json.dumps(battery01payload)))
+        #print(clientB01.publish("v1/devices/me/telemetry", json.dumps(battery01payload)))
+        print(battery01payload)
         time.sleep(10)
         
         
