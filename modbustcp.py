@@ -205,7 +205,7 @@ def dojob02():
     time.sleep(1)
 
 schedule.every(2).minutes.do(dojob01)
-schedule.every(10).seconds.do(dojob02)
+schedule.every(15).seconds.do(dojob02)
 
 while True:
     #getBatteryOP('192.168.50.6')
