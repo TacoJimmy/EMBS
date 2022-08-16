@@ -198,11 +198,11 @@ def dojob01():
 
 def dojob02():
     SendCharg("53JeWDHVqEqiWnHtP0Vx",'192.168.50.6')
-    time.sleep(5)
+    time.sleep(1)
     SendCharg("YG1RNWgn8YEIGK7YFnId",'192.168.50.7')
-    time.sleep(5)
+    time.sleep(1)
     SendCharg("PXShUefr1Utw13cfXzr1",'192.168.50.8')
-    time.sleep(5)
+    time.sleep(1)
 
 schedule.every(2).minutes.do(dojob01)
 schedule.every(10).seconds.do(dojob02)
