@@ -173,5 +173,5 @@ if __name__ == '__main__':
         SendMainSystem03("PXShUefr1Utw13cfXzr1",'192.168.50.8')
         time.sleep(2)
 
-        time.sleep(3300)
+        time.sleep(600)
     
