@@ -171,12 +171,10 @@ def dojob():
 
 schedule.every(2).minutes.do(dojob)
 
-if __name__ == '__main__':
-
-    while True:
-        #getBatteryOP('192.168.50.6')
-        #time.sleep(60)
-        schedule.run_pending()
-        time.sleep(2)
+while True:
+    #getBatteryOP('192.168.50.6')
+    #time.sleep(60)
+    schedule.run_pending()
+    time.sleep(2)
         
     
