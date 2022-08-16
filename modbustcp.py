@@ -11,7 +11,7 @@ import random
 import json  
 import datetime 
 import time
-
+import schedule
 
 def ReadFloat(*args,reverse=False):
     for n,m in args:
@@ -160,18 +160,21 @@ def getBatteryOP(HOST_Addr):
         
     except:
         pass
-    
+
+def dojob():
+    SendMainSystem01("53JeWDHVqEqiWnHtP0Vx",'192.168.50.6')
+    time.sleep(5)
+    SendMainSystem02("YG1RNWgn8YEIGK7YFnId",'192.168.50.7')
+    time.sleep(5)
+    SendMainSystem03("PXShUefr1Utw13cfXzr1",'192.168.50.8')
+    time.sleep(5)
+
+
 if __name__ == '__main__':
 
     while True:
         #getBatteryOP('192.168.50.6')
         #time.sleep(60)
-        SendMainSystem01("53JeWDHVqEqiWnHtP0Vx",'192.168.50.6')
-        time.sleep(2)
-        SendMainSystem02("YG1RNWgn8YEIGK7YFnId",'192.168.50.7')
-        time.sleep(2)
-        SendMainSystem03("PXShUefr1Utw13cfXzr1",'192.168.50.8')
-        time.sleep(2)
-
-        time.sleep(600)
+        schedule.every(2).minutes.do(dojob)
+        
     
