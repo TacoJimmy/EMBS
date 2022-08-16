@@ -66,7 +66,7 @@ def getMainPower(HOST_Addr):
                           "MainSysPower10" : 9999,
                           "MainSysPower11" : 9999,
                           "MainSysPower12" : 9999, }
-    print (MainSysPayload)
+    #print (MainSysPayload)
     return MainSysPayload
 
 def SendMainSystem01(token,IPaddr):
