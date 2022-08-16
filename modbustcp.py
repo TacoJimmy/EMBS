@@ -164,14 +164,14 @@ def getBatteryOP(HOST_Addr):
 if __name__ == '__main__':
 
     while True:
-        getBatteryOP('192.168.50.6')
-        time.sleep(60)
+        #getBatteryOP('192.168.50.6')
+        #time.sleep(60)
         SendMainSystem01("53JeWDHVqEqiWnHtP0Vx",'192.168.50.6')
-        time.sleep(60)
+        time.sleep(2)
         SendMainSystem02("YG1RNWgn8YEIGK7YFnId",'192.168.50.7')
-        time.sleep(60)
+        time.sleep(2)
         SendMainSystem03("PXShUefr1Utw13cfXzr1",'192.168.50.8')
-        time.sleep(60)
+        time.sleep(2)
 
         time.sleep(3300)
     
