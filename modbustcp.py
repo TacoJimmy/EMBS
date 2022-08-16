@@ -175,6 +175,6 @@ while True:
     #getBatteryOP('192.168.50.6')
     #time.sleep(60)
     schedule.run_pending()
-    time.sleep(2)
+    time.sleep(1)
         
     
