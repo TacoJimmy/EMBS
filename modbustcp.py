@@ -69,6 +69,33 @@ def getMainPower(HOST_Addr):
     #print (MainSysPayload)
     return MainSysPayload
 
+def Battery_charging(HOST_Addr):
+    
+    try:
+        MainSysPower = [0,0,0,0]
+        master = modbus_tcp.TcpMaster(host=HOST_Addr)
+        master.set_timeout(5.0)
+        demo1 = master.execute(1, cst.READ_HOLDING_REGISTERS, 6, 4)
+        for i in range(2):
+            MainSysPower[i] = conver32(demo1[i*2],demo1[i*2+1])
+            
+        MainSysPayload = {"MainChargingPower" : MainSysPower[0]*0.1,
+                          "MainDischargingPower" : MainSysPower[1]*0.1}
+    except:
+        MainSysPayload = {"MainChargingPower" : 9999,
+                          "MainDischargingPower" : 9999 }
+    #print (MainSysPayload)
+    return MainSysPayload
+
+def SendCharg(token,IPaddr):
+    try:
+        client1 = mqtt.Client()
+        client1.username_pw_set(token," ")
+        client1.connect("thingsboard.cloud", 1883, 60)
+        print(client1.publish("v1/devices/me/telemetry", json.dumps(getMainPower(IPaddr))))
+    except:
+        pass
+
 def SendMainSystem01(token,IPaddr):
     try:
         client1 = mqtt.Client()
@@ -161,7 +188,7 @@ def getBatteryOP(HOST_Addr):
     except:
         pass
 
-def dojob():
+def dojob01():
     SendMainSystem01("53JeWDHVqEqiWnHtP0Vx",'192.168.50.6')
     time.sleep(5)
     SendMainSystem02("YG1RNWgn8YEIGK7YFnId",'192.168.50.7')
@@ -169,7 +196,16 @@ def dojob():
     SendMainSystem03("PXShUefr1Utw13cfXzr1",'192.168.50.8')
     time.sleep(5)
 
-schedule.every(2).minutes.do(dojob)
+def dojob02():
+    SendCharg("53JeWDHVqEqiWnHtP0Vx",'192.168.50.6')
+    time.sleep(5)
+    SendCharg("YG1RNWgn8YEIGK7YFnId",'192.168.50.7')
+    time.sleep(5)
+    SendCharg("PXShUefr1Utw13cfXzr1",'192.168.50.8')
+    time.sleep(5)
+
+schedule.every(2).minutes.do(dojob01)
+schedule.every(10).seconds.do(dojob02)
 
 while True:
     #getBatteryOP('192.168.50.6')
